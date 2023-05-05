@@ -7,4 +7,5 @@ export interface Trips {
     return_station_name: string; 
     covered_distance_m: number; 
     duration_sec: number;
+    duration: string;
 }

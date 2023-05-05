@@ -17,7 +17,7 @@ export class TripsComponent implements OnInit {
 
   currentPage = 1;
   totalTrips = 0;
-  tripsPerPage = 10;
+  tripsPerPage = 25;
 
   constructor (private http: HttpClient) 
   {}
@@ -40,7 +40,20 @@ export class TripsComponent implements OnInit {
         })
       )
       .subscribe(response => {
-        this.trips = response;
+        this.trips = response.map(trip => {
+          const date = new Date(trip.bike_departure);
+          const formattedDate = 
+            `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}, ${date.getHours()}.${date.getMinutes()}`
+
+          const formattedDuration = 
+            `${Math.floor(trip.duration_sec / 60)} min ${trip.duration_sec % 60 < 10 ? '0' : ''}${trip.duration_sec % 60} s`;
+
+          return {
+            ...trip,
+            bike_departure: formattedDate,
+            duration: formattedDuration
+          };
+        })
         this.totalTrips = response.length;
         console.log(response);
     });
