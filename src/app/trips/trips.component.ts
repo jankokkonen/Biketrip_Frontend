@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { TripsService } from '../../services/trips.service';
+import { Observable, catchError, throwError } from 'rxjs';
 
 import { Trips } from '../../shared/interfaces'
 
@@ -19,7 +18,7 @@ export class TripsComponent implements OnInit {
   totalTrips = 0;
   tripsPerPage = 25;
 
-  constructor (private http: HttpClient) 
+  constructor (private tripsService: TripsService) 
   {}
 
   ngOnInit(): void {
@@ -32,7 +31,7 @@ export class TripsComponent implements OnInit {
       offset:((this.currentPage - 1) * this.tripsPerPage).toString()
     }
 
-    this.http.get<Trips[]>(`${this.url}`, { params })
+    this.tripsService.getTrips(params.limit, params.offset)
       .pipe(
         catchError(error => {
           console.error(error);
