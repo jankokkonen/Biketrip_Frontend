@@ -9,3 +9,18 @@ export interface Trips {
     duration_sec: number;
     duration: string;
 }
+
+export interface Stations {
+    station_id: number; 
+    nimi: string;
+    namn: string;
+    name: string;
+    osoite: string; 
+    adress: string; 
+    kaupunki: string; 
+    stad: string;
+    operaattori: string;
+    kapasiteetti: string;
+    x: number;
+    y: number;
+}
