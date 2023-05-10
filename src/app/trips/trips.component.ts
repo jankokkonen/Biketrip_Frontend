@@ -10,7 +10,6 @@ import { Trips } from '../../shared/interfaces'
   styleUrls: ['./trips.component.css']
 })
 export class TripsComponent implements OnInit {
-  private url = 'http://localhost:3000/get'
 
   trips?: Trips[] = [];
 
