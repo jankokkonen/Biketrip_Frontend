@@ -14,6 +14,10 @@ export class StationsComponent implements OnInit {
 
   stations?: Stations[] = [];
 
+  currentPage = 1;
+  totalStations = 0;
+  stationsPerPage = 25;
+
   constructor (private stationsService: StationsService) 
   {}
 
@@ -22,15 +26,36 @@ export class StationsComponent implements OnInit {
   }
 
   fetchStations() {
-  this.stationsService.getStations()
-    .pipe(
-      catchError(error => {
-        console.error(error);
-        return throwError(error);
-      })
-    ).subscribe(stations => {
-      console.log(stations);
-      this.stations = stations;
-    });
-}
+    const params = {
+      limit: this.stationsPerPage.toString(),
+      offset:((this.currentPage - 1) * this.stationsPerPage).toString()
+    }
+
+    this.stationsService.getStations(params.limit, params.offset)
+      .pipe(
+        catchError(error => {
+          console.error(error);
+          return throwError(error);
+        })
+      ).subscribe(response => {
+        this.stations = response.map(station => {
+          return {
+            ...station
+          }
+        })
+        this.totalStations = response.length;
+        // console.log(response);
+      });
+  }
+  loadNextTrips() {
+    this.currentPage++;
+    this.fetchStations();
+  }
+
+  loadPreviousTrips() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.fetchStations();
+    }
+  }
 }

@@ -53,7 +53,7 @@ export class TripsComponent implements OnInit {
           };
         })
         this.totalTrips = response.length;
-        console.log(response);
+        // console.log(response);
     });
   }
 
