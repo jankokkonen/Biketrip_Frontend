@@ -18,4 +18,5 @@ export class TripsService {
   
     return this.http.get<Trips[]>(`${this.url}`, { params });
   }
+  // Lisää funktio joka laskee asemittain kuinka monta kertaa pyörä on lähtenyt asemalta
 }

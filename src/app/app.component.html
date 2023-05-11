@@ -1,2 +1,19 @@
-<app-trips></app-trips>
-<app-stations></app-stations>
+<div>
+    <div>
+        <button class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4"
+        [ngClass]="{'bg-blue-900': selectedButton === 'stations'}" 
+        (click)="showStations()">Stations</button>
+
+        <button class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4"
+        [ngClass]="{'bg-blue-900': selectedButton === 'trips'}" 
+        (click)="showTrips()">Journeys</button>
+
+        <ng-container *ngIf="showTripsComponent">
+            <app-trips></app-trips>
+        </ng-container>
+        
+        <ng-container *ngIf="showStationsComponent">
+            <app-stations></app-stations>
+        </ng-container>
+    </div>
+</div>

@@ -15,7 +15,7 @@ export class TripsComponent implements OnInit {
 
   currentPage = 1;
   totalTrips = 0;
-  tripsPerPage = 25;
+  tripsPerPage = 20;
 
   constructor (private tripsService: TripsService) 
   {}

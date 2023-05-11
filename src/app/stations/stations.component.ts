@@ -16,9 +16,10 @@ export class StationsComponent implements OnInit {
 
   currentPage = 1;
   totalStations = 0;
-  stationsPerPage = 25;
+  stationsPerPage = 20;
 
-  constructor (private stationsService: StationsService) 
+  constructor (
+    private stationsService: StationsService) 
   {}
 
   ngOnInit(): void {
