@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Stations } from 'src/shared/interfaces';
@@ -12,7 +12,11 @@ export class StationsService {
 
   constructor(private http: HttpClient) { }
 
-  getStations(): Observable<Stations[]> {
-    return this.http.get<Stations[]>(this.url);
+  getStations(limit: string, offset: string): Observable<Stations[]> {
+    const params = new HttpParams()
+      .set('limit', limit)
+      .set('offset', offset);
+  
+    return this.http.get<Stations[]>(`${this.url}`, { params });
   }
 }
