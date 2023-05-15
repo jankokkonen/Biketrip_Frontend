@@ -19,8 +19,6 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.addTestMarker();
-    this.addTestMarker2();
     this.getAndDisplayStations();
   }
 
@@ -31,16 +29,6 @@ export class MapComponent implements AfterViewInit {
       attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
       maxZoom: 18
     }).addTo(this.map);
-  }
-
-  private addTestMarker(): void {
-    const marker = L.marker([60.1699, 24.9384]).addTo(this.map);
-    marker.bindPopup('Test Marker');
-  }
-
-  private addTestMarker2(): void {
-    const marker = L.marker([24.8989998259643, 60.2444085812279]).addTo(this.map);
-    marker.bindPopup('Test Marker');
   }
 
   private getAndDisplayStations(): void {
