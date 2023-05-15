@@ -12,7 +12,7 @@
             <tr *ngFor="let trip of trips" class="hover: cursor-pointer">
                 <td class="pr-5">{{ trip.departure_station_name }}</td>
                 <td class="pr-5">{{ trip.return_station_name }}</td>
-                <td>{{ trip.covered_distance_m }}</td>
+                <td>{{ trip.covered_distance_km }}</td>
                 <td>{{ trip.duration }}</td>
             </tr>
         </tbody>

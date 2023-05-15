@@ -8,6 +8,7 @@ export interface Trips {
     covered_distance_m: number; 
     duration_sec: number;
     duration: string;
+    covered_distance_km: string;
 }
 
 export interface Stations {
