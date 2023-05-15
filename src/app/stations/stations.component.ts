@@ -48,12 +48,12 @@ export class StationsComponent implements OnInit {
         // console.log(response);
       });
   }
-  loadNextTrips() {
+  loadNextStations() {
     this.currentPage++;
     this.fetchStations();
   }
 
-  loadPreviousTrips() {
+  loadPreviousStations() {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.fetchStations();
