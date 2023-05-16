@@ -13,6 +13,7 @@ import { Stations } from 'src/shared/interfaces';
 export class StationsComponent implements OnInit {
 
   stations?: Stations[] = [];
+  selectedStation?: Stations;
 
   currentPage = 1;
   totalStations = 0;
@@ -48,6 +49,12 @@ export class StationsComponent implements OnInit {
         // console.log(response);
       });
   }
+
+  openStationDetails(station: Stations) {
+      console.log(station)
+      this.selectedStation = station;
+  }
+
   loadNextStations() {
     this.currentPage++;
     this.fetchStations();
