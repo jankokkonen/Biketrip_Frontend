@@ -18,7 +18,13 @@
         </tbody>
     </table>
     <div class="py-5">
-        <button class="pr-10" (click)="loadPreviousTrips()"> < Back</button>
-        <button (click)="loadNextTrips()">Next ></button>
+        <button 
+        *ngIf="currentPage > 1" 
+        class="pr-10" (click)="loadPreviousTrips()">
+        Back</button>
+
+        <button 
+        (click)="loadNextTrips()">
+        Next</button>
     </div>
 </section>
