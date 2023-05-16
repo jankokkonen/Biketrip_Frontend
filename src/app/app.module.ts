@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { TripsComponent } from './trips/trips.component';
 import { StationsComponent } from './stations/stations.component';
 import { MapComponent } from './map/map.component';
+import { StationDetailsComponent } from './station-details/station-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TripsComponent,
     StationsComponent,
-    MapComponent
+    MapComponent,
+    StationDetailsComponent
   ],
   imports: [
     BrowserModule,
