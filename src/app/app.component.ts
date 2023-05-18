@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'biketrip_frontend';
   showTripsComponent = false;
   showStationsComponent = true;
-  selectedButton: string = 'stations';
+  selectedButton: 'stations' | 'trips' = 'stations';
 
   showStations() {
     this.selectedButton = 'stations';
@@ -22,5 +22,4 @@ export class AppComponent {
     this.showTripsComponent = true;
     this.showStationsComponent = false;
   }
-  
 }
