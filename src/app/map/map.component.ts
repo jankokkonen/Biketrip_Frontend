@@ -13,7 +13,7 @@ export class MapComponent implements AfterViewInit {
   @ViewChild('map', { static: true }) 
   mapContainer!: ElementRef;
   public map!: L.Map;
-  markers:L.Marker<any> [] = []
+  markers:L.Marker[] = []
 
   constructor(private stationsService: StationsService) {}
 
