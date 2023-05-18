@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges  } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Stations } from 'src/shared/interfaces';
 import { TripsService } from 'src/services/trips.service';
@@ -21,13 +21,6 @@ export class StationDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getDepartureCount();
     this.getReturnCount();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['station'] && !changes['station'].firstChange) {
-      this.getDepartureCount();
-      this.getReturnCount();
-    }
   }
 
   getDepartureCount(): void {
