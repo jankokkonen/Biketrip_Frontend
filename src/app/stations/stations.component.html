@@ -3,17 +3,23 @@
         <table>
             <thead>
                 <tr>
-                    <th class="text-left">Station Name</th>
+                    <th class="text-left font-bold">Station Name</th>
                 </tr>
             </thead>
             <tbody>
                 <tr 
-                *ngFor="let station of stations" 
-                class="hover: cursor-pointer"
-                (click)="openStationDetails(station)">
-                    <td>{{ station.name }}</td>
+                  *ngFor="let station of stations; let i = index" 
+                  [ngClass]="{
+                    'hover:bg-gray-200 cursor-pointer': selectedHeader !== 'StationName' && selectedStationIndex !== i,
+                    'bg-gray-200 cursor-pointer': selectedHeader === 'StationName' && selectedStationIndex === i
+                  }" 
+                  (click)="selectStation(i); selectHeader('StationName'); openStationDetails(station)"
+                >
+                  <td>{{ station.name }}</td>
                 </tr>
-            </tbody>
+              </tbody>
+              
+              
         </table>
         <div class="py-5">
             <button 
@@ -26,6 +32,9 @@
     </section>
 
     <section class="ml-5 mt-5">
-        <app-station-details *ngIf="selectedStation" [station]="selectedStation"></app-station-details>
+        <app-station-details 
+        *ngIf="selectedStation" 
+        [station]="selectedStation">
+        </app-station-details>
     </section>
 </section>  

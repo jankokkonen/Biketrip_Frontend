@@ -11,6 +11,8 @@ import { Stations } from 'src/shared/interfaces';
   styleUrls: ['./stations.component.css']
 })
 export class StationsComponent implements OnInit {
+  selectedStationIndex?: number;
+  selectedHeader?: string;
 
   stations?: Stations[] = [];
   selectedStation?: Stations;
@@ -25,6 +27,14 @@ export class StationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchStations();
+  }
+
+  selectStation(index: number): void {
+    this.selectedStationIndex = index;
+  }
+
+  selectHeader(header: string): void {
+    this.selectedHeader = header;
   }
 
   fetchStations() {
