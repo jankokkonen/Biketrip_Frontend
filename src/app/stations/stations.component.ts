@@ -51,7 +51,7 @@ export class StationsComponent implements OnInit {
   }
 
   openStationDetails(station: Stations) {
-      console.log(station)
+      // console.log(station)
       this.selectedStation = station;
   }
 

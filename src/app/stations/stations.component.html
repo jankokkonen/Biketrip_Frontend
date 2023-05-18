@@ -16,8 +16,12 @@
             </tbody>
         </table>
         <div class="py-5">
-            <button *ngIf="currentPage > 1" class="pr-10" (click)="loadPreviousStations()"> < Back</button>
-            <button (click)="loadNextStations()">Next ></button>
+            <button 
+            *ngIf="currentPage > 1" 
+            class="pr-10" (click)="loadPreviousStations()">
+            Back</button>
+
+            <button (click)="loadNextStations()">Next</button>
         </div>
     </section>
 

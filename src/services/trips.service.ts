@@ -15,8 +15,11 @@ export class TripsService {
     const params = new HttpParams()
       .set('limit', limit)
       .set('offset', offset);
-  
     return this.http.get<Trips[]>(`${this.url}`, { params });
   }
-  // Lisää funktio joka laskee asemittain kuinka monta kertaa pyörä on lähtenyt asemalta
+
+  getDepartureCount(stationName: string): Observable<number> {
+    const params = new HttpParams().set('stationName', stationName);
+    return this.http.get<number>('http://localhost:3000/getBikeDepartures', {params});
+  }
 }
