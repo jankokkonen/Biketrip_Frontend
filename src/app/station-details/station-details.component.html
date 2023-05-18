@@ -1,19 +1,27 @@
 <div class="station-details">
-    <table>
-        <thead>
-            <th class="text-left">{{ station?.name }}</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td><p>{{ station?.osoite }}</p></td>
-            </tr>
-            <tr>
-                <td><p>Capacity {{ station?.kapasiteetti }} bikes</p></td>
-            </tr>
-            <tr>
-                <td><p>Departures {{ departureCount }}</p></td>
-                <td><p>Arrivals {{ returnCount }}</p></td>
-            </tr>
-        </tbody>
-    </table>
+  <table>
+    <thead>
+      <th class="text-left">{{ station?.name }}</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <p>{{ station?.osoite }}</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Capacity {{ station?.kapasiteetti }} bikes</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Departures {{ departureCount }}</p>
+        </td>
+        <td>
+          <p>Arrivals {{ returnCount }}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
