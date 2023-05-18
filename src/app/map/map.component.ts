@@ -36,16 +36,30 @@ export class MapComponent implements AfterViewInit {
       stations.forEach((station: Stations) => {
         const icon = L.icon({
           iconUrl: `../../assets/img/bicycle.png`,
-          iconSize: [25, 25], // size of the icon
-          iconAnchor: [15.5, 42], // point of the icon which will correspond to marker's location
-          popupAnchor: [0, -40] // point from which the popup should open relative to the iconAnchor
+          iconSize: [20, 20],
+          iconAnchor: [15.5, 42],
+          popupAnchor: [0, -40]
         });
   
-        const marker = L.marker([station.y, station.x],{ icon }).addTo(this.map);
-        marker.bindPopup(station.name);
-      })
-      
+        const marker = L.marker([
+          station.y, 
+          station.x
+        ], { icon }).addTo(this.map);
+
+        const popup = L.popup({
+          closeButton: false
+        }).setContent(station.name);
+
+        marker.bindPopup(popup);
+        
+        marker.on('mouseover', () => {
+          marker.openPopup();
+        });
+  
+        marker.on('mouseout', () => {
+          marker.closePopup();
+        });
+      });
     });
   }
-  
-}
+}  

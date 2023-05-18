@@ -22,4 +22,9 @@ export class TripsService {
     const params = new HttpParams().set('stationName', stationName);
     return this.http.get<number>('http://localhost:3000/getBikeDepartures', {params});
   }
+
+  getReturnCount(stationName: string): Observable<number> {
+    const params = new HttpParams().set('stationName', stationName);
+    return this.http.get<number>('http://localhost:3000/getBikeReturns', {params});
+  }
 }

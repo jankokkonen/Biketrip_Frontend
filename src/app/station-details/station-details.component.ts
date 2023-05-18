@@ -11,6 +11,7 @@ export class StationDetailsComponent implements OnInit {
   @Input() station?: Stations;
 
   departureCount = 0;
+  returnCount = 0;
 
   constructor (
     private tripsService: TripsService,
@@ -19,21 +20,33 @@ export class StationDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDepartureCount();
+    this.getReturnCount();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['station'] && !changes['station'].firstChange) {
       this.getDepartureCount();
+      this.getReturnCount();
     }
   }
 
   getDepartureCount(): void {
     if (this.station) {
-      // console.log(this.station['name'])
       this.tripsService.getDepartureCount(this.station['name'])
         .subscribe((count: any) => {
           this.departureCount = count[0].count;
           console.log(this.departureCount);
+      })
+    }
+  }
+
+  getReturnCount() {
+    if (this.station) {
+      // console.log(this.station['name'])
+      this.tripsService.getReturnCount(this.station['name'])
+        .subscribe((count: any) => {
+          this.returnCount = count[0].count;
+          console.log(this.returnCount);
       })
     }
   }
