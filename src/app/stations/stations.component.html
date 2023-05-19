@@ -8,13 +8,14 @@
       </thead>
       <tbody>
         <tr
-          *ngFor="let station of stations; let i = index"
-          [ngClass]="{
-            'hover:bg-gray-200 cursor-pointer':
-              selectedHeader !== 'StationName' && selectedStationIndex !== i,
-            'bg-gray-200 cursor-pointer':
-              selectedHeader === 'StationName' && selectedStationIndex === i
-          }"
+        *ngFor="let station of stations; let i = index"
+        [ngClass]="{
+          'hover:bg-gray-200':
+            selectedHeader !== 'StationName' && selectedStationIndex !== i,
+          'bg-gray-200':
+            selectedHeader === 'StationName' && selectedStationIndex === i,
+          'cursor-pointer': true
+        }"
           (click)="
             selectStation(i);
             selectHeader('StationName');

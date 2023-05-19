@@ -68,12 +68,14 @@ export class StationsComponent implements OnInit {
   loadNextStations() {
     this.currentPage++;
     this.fetchStations();
+    this.selectedStation = undefined;
   }
 
   loadPreviousStations() {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.fetchStations();
+      this.selectedStation = undefined;
     }
   }
 }
