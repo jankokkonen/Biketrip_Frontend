@@ -1,5 +1,14 @@
 <div class="flex flex-wrap">
   <div class="ml-5 mt-5 w-[225px]">
+    <form (ngSubmit)="searchStations()" #searchForm="ngForm">
+      <input
+        type="text"
+        name="searchBox"
+        placeholder="Search stations..."
+        [(ngModel)]="searchText"
+        class="p-1 border border-gray-300 rounded mb-2"
+      >
+    </form>
     <table>
       <thead>
         <tr>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
+import { catchError, throwError, Subject, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { StationsService } from 'src/services/stations.service';
 
@@ -14,21 +15,43 @@ import { Stations } from 'src/shared/interfaces';
 export class StationsComponent implements OnInit {
   selectedStationIndex?: number;
   selectedHeader?: string;
-
   stations?: Stations[] = [];
+  stationsSearch?: Stations[] = [];
+  searchText?: string = '';
   selectedStation?: Stations;
 
   currentPage = 1;
   totalStations = 0;
-  stationsPerPage = 20;
+  stationsPerPage = 18;
 
   constructor (
     private stationsService: StationsService,
     private router: Router
     ) {}
 
-  ngOnInit(): void {
-    this.fetchStations();
+    ngOnInit(): void {
+      this.searchTerm.pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap(() => {
+          if (this.searchText !== undefined) {
+            return this.stationsService.getStationsSearch(this.searchText);
+          } else {
+            return of([]); // Tyhjä tulos, jos searchText on undefined
+          }
+        })
+      ).subscribe((stations: Stations[]) => {
+        this.stationsSearch = stations;
+      });
+      this.fetchStations();
+    }
+
+  private searchTerm = new Subject<string>();
+  
+  searchStations(): void {
+    if (this.searchText !== undefined) {
+      this.searchTerm.next(this.searchText);
+    }
   }
 
   selectStation(index: number): void {

@@ -22,4 +22,9 @@ export class StationsService {
     return this.http.get<Stations[]>(`${this.url}`, { params });
   }
 
+  getStationsSearch(searchText: string): Observable<Stations[]> {
+    console.log(searchText)
+    return this.http.get<Stations[]>(`${this.url}?search=${searchText}`);
+  }
+
 }
