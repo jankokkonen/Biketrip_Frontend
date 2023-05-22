@@ -1,4 +1,4 @@
-<section class="ml-5 mt-5 w-[600px]">
+<div class="ml-5 mt-5 w-[600px]">
   <table>
     <thead>
       <tr>
@@ -10,8 +10,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let trip of trips" class="hover: cursor-pointer">
-        <td class="pr-5">{{ trip.departure_station_name }}</td>
-        <td class="pr-5">{{ trip.return_station_name }}</td>
+        <td>{{ trip.departure_station_name }}</td>
+        <td>{{ trip.return_station_name }}</td>
         <td>{{ trip.covered_distance_km }}</td>
         <td>{{ trip.duration }}</td>
       </tr>
@@ -24,4 +24,4 @@
 
     <button (click)="loadNextTrips()">Next</button>
   </div>
-</section>
+</div>
