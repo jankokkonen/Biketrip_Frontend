@@ -8,7 +8,7 @@ import { Stations } from 'src/shared/interfaces';
   providedIn: 'root'
 })
 export class StationsService {
-  public url = 'http://localhost:3000/getStations';
+  private url = 'http://localhost:3000/getStations';
 
   constructor(
     private http: HttpClient

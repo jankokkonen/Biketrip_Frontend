@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Stations } from 'src/shared/interfaces';
 import { TripsService } from 'src/services/trips.service';
 @Component({
@@ -9,17 +8,17 @@ import { TripsService } from 'src/services/trips.service';
   styleUrls: ['./station-details.component.css']
 })
 export class StationDetailsComponent implements OnInit {
-  @Input() station?: Stations;
+  station?: Stations;
 
   departureCount = 0;
   returnCount = 0;
 
   constructor (
-    private tripsService: TripsService,
-    private http: HttpClient
+    private tripsService: TripsService
     ) {}
 
   ngOnInit(): void {
+    this.station = history.state.station;
     this.getDepartureCount();
     this.getReturnCount();
   }
@@ -29,7 +28,6 @@ export class StationDetailsComponent implements OnInit {
       this.tripsService.getDepartureCount(this.station['name'])
         .subscribe((count: any) => {
           this.departureCount = count[0].count;
-          console.log(this.departureCount);
       })
     }
   }
@@ -40,7 +38,6 @@ export class StationDetailsComponent implements OnInit {
       this.tripsService.getReturnCount(this.station['name'])
         .subscribe((count: any) => {
           this.returnCount = count[0].count;
-          console.log(this.returnCount);
       })
     }
   }

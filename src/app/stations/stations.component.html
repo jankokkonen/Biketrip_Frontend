@@ -8,18 +8,11 @@
       </thead>
       <tbody>
         <tr
-        *ngFor="let station of stations; let i = index"
-        [ngClass]="{
-          'hover:bg-gray-200':
-            selectedHeader !== 'StationName' && selectedStationIndex !== i,
-          'bg-gray-200':
-            selectedHeader === 'StationName' && selectedStationIndex === i,
-          'cursor-pointer': true
-        }"
+          *ngFor="let station of stations; let i = index"
           (click)="
             selectStation(i);
             selectHeader('StationName');
-            openStationDetails(station)
+            openStationDetails(station);
           "
         >
           <td>{{ station.name }}</td>
@@ -37,10 +30,5 @@
 
       <button (click)="loadNextStations()">Next</button>
     </div>
-  </section>
-
-  <section class="ml-5 mt-5">
-    <app-station-details *ngIf="selectedStation" [station]="selectedStation">
-    </app-station-details>
   </section>
 </section>

@@ -19,6 +19,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    TripsComponent,
+    StationsComponent,
     MapComponent,
     StationDetailsComponent
   ],

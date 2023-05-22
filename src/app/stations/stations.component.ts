@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { StationsService } from 'src/services/stations.service';
 
@@ -22,8 +23,9 @@ export class StationsComponent implements OnInit {
   stationsPerPage = 20;
 
   constructor (
-    private stationsService: StationsService) 
-  {}
+    private stationsService: StationsService,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.fetchStations();
@@ -56,13 +58,12 @@ export class StationsComponent implements OnInit {
           }
         })
         this.totalStations = response.length;
-        // console.log(response);
       });
   }
 
   openStationDetails(station: Stations) {
-      // console.log(station)
       this.selectedStation = station;
+      this.router.navigate(['/station-details', station.station_id], { state: { station } });
   }
 
   loadNextStations() {

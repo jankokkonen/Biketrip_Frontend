@@ -1,4 +1,4 @@
-<div class="station-details">
+<div class="station-details ml-5 mt-5">
   <table>
     <thead>
       <th class="text-left">{{ station?.name }}</th>
@@ -14,13 +14,13 @@
           <p>Capacity {{ station?.kapasiteetti }} bikes</p>
         </td>
       </tr>
-      <tr>
-        <td>
+      <tr class="flex">
+        <span class="pr-3">
           <p>Departures {{ departureCount }}</p>
-        </td>
-        <td>
+        </span>
+        <span>
           <p>Arrivals {{ returnCount }}</p>
-        </td>
+        </span>
       </tr>
     </tbody>
   </table>
