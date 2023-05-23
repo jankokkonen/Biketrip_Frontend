@@ -7,6 +7,7 @@
         placeholder="Search stations..."
         [(ngModel)]="searchText"
         class="p-1 border border-gray-300 rounded mb-2"
+        #searchInput
       >
     </form>
 
@@ -59,7 +60,11 @@
         Back
       </button>
 
-      <button (click)="loadNextStations()">Next</button>
+      <button 
+      (click)="loadNextStations()"
+      *ngIf="!stationsSearch || stationsSearch.length === 0"
+      >
+      Next</button>
     </div>
   </div>
 </div>

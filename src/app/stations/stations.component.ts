@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { catchError, throwError, Subject, of } from 'rxjs';
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { catchError, throwError, Subject, of, fromEvent } from 'rxjs';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
@@ -13,6 +13,8 @@ import { Stations } from 'src/shared/interfaces';
   styleUrls: ['./stations.component.css']
 })
 export class StationsComponent implements OnInit {
+  @ViewChild('searchInput', { static: false }) searchInput!: ElementRef;
+
   selectedStationIndex?: number;
   selectedHeader?: string;
   stations?: Stations[] = [];
@@ -29,25 +31,26 @@ export class StationsComponent implements OnInit {
     private router: Router
     ) {}
 
-    ngOnInit(): void {
-      this.searchTerm.pipe(
-        debounceTime(300),
-        distinctUntilChanged(),
-        switchMap(() => {
-          if (this.searchText !== undefined) {
-            console.log(this.searchText)
-            return this.stationsService.getStationsSearch(this.searchText);
-          } else {
-            return of([]); // Tyhjä tulos, jos searchText on undefined
-          }
-        })
-      ).subscribe((stations: Stations[]) => {
-        this.stationsSearch = stations;
-        console.log(this.stationsSearch)
-      });
-      this.fetchStations();
-    }
+  ngOnInit(): void {
+    this.fetchStations();
+  }
 
+  ngAfterViewInit(): void {
+    fromEvent(this.searchInput.nativeElement, 'input').pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(() => {
+        if (this.searchText !== undefined) {
+          return this.stationsService.getStationsSearch(this.searchText);
+        } else {
+          return of([]);
+        }
+      })
+    ).subscribe((stations: Stations[]) => {
+      this.stationsSearch = stations;
+    });
+  }
+  
   private searchTerm = new Subject<string>();
   
   searchStations(): void {
