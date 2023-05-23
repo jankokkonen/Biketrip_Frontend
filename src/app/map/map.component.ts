@@ -48,27 +48,17 @@ export class MapComponent implements AfterViewInit {
         ], { icon }).addTo(this.map);
 
         const popup = L.popup({
-          closeButton: false
+          closeButton: true
         }).setContent(station.nimi);
 
         marker.bindPopup(popup);
 
-        // marker.on('click', () => {
-        //   this.map.setView(marker.getLatLng(), this.map.getZoom());
-        // });  
-
         marker.on('click', () => {
           this.setSelectedMarker(marker);
         });
-        
-        marker.on('mouseover', () => {
-          marker.openPopup();
-        });
   
-        marker.on('mouseout', () => {
-          if (this.selectedMarker !== marker) {
-            marker.closePopup();
-          }
+        marker.on('mouseover', () => {
+            marker.openPopup();
         });
       });
     });
