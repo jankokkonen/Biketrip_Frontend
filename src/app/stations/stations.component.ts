@@ -35,6 +35,7 @@ export class StationsComponent implements OnInit {
         distinctUntilChanged(),
         switchMap(() => {
           if (this.searchText !== undefined) {
+            console.log(this.searchText)
             return this.stationsService.getStationsSearch(this.searchText);
           } else {
             return of([]); // Tyhjä tulos, jos searchText on undefined
@@ -42,6 +43,7 @@ export class StationsComponent implements OnInit {
         })
       ).subscribe((stations: Stations[]) => {
         this.stationsSearch = stations;
+        console.log(this.stationsSearch)
       });
       this.fetchStations();
     }

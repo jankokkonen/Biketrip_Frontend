@@ -23,8 +23,8 @@ export class StationsService {
   }
 
   getStationsSearch(searchText: string): Observable<Stations[]> {
-    console.log(searchText)
-    return this.http.get<Stations[]>(`${this.url}?search=${searchText}`);
+    const params = new HttpParams().set('searchText', searchText);
+    return this.http.get<Stations[]>('http://localhost:3000/getStationsBySearch', {params});
   }
 
 }
