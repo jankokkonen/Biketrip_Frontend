@@ -11,10 +11,10 @@
       >
     </form>
 
-    <table *ngIf="!stationsSearch || stationsSearch.length === 0">
+    <table *ngIf="stationsSearch?.length === 0">
       <thead>
         <tr>
-          <th class="text-left font-bold">Station Name</th>
+          <th class="text-left pb-2">Station Name</th>
         </tr>
       </thead>
       <tbody>
@@ -31,10 +31,10 @@
       </tbody>
     </table>
 
-    <table *ngIf="stationsSearch">
+    <table *ngIf="stationsSearch?.length !== 0">
       <thead>
         <tr>
-          <th class="text-left font-bold">Station Name</th>
+          <th class="text-left">Station Name</th>
         </tr>
       </thead>
       <tbody>
