@@ -14,6 +14,7 @@ export class MapComponent implements AfterViewInit {
   mapContainer!: ElementRef;
   public map!: L.Map;
   markers:L.Marker[] = []
+  private selectedMarker!: L.Marker;
 
   constructor(private stationsService: StationsService) {}
 
@@ -48,18 +49,42 @@ export class MapComponent implements AfterViewInit {
 
         const popup = L.popup({
           closeButton: false
-        }).setContent(station.name);
+        }).setContent(station.nimi);
 
         marker.bindPopup(popup);
+
+        // marker.on('click', () => {
+        //   this.map.setView(marker.getLatLng(), this.map.getZoom());
+        // });  
+
+        marker.on('click', () => {
+          this.setSelectedMarker(marker);
+        });
         
         marker.on('mouseover', () => {
           marker.openPopup();
         });
   
         marker.on('mouseout', () => {
-          marker.closePopup();
+          if (this.selectedMarker !== marker) {
+            marker.closePopup();
+          }
         });
       });
     });
+  }
+
+  private setSelectedMarker(marker: L.Marker): void {
+    if (this.selectedMarker === marker) {
+      this.selectedMarker;
+      marker.closePopup();
+    } else {
+      if (this.selectedMarker) {
+        this.selectedMarker.closePopup();
+      }
+      this.selectedMarker = marker;
+      marker.openPopup();
+      this.map.setView(marker.getLatLng(), this.map.getZoom());
+    }
   }
 }  

@@ -40,8 +40,9 @@ export class StationsComponent implements OnInit {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap(() => {
-        if (this.searchText !== undefined) {
-          return this.stationsService.getStationsSearch(this.searchText);
+        const searchTerm = this.searchText?.toLowerCase() ?? '';
+        if (searchTerm.length >= 3) {
+          return this.stationsService.getStationsSearch(searchTerm);
         } else {
           return of([]);
         }

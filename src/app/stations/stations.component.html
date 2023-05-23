@@ -51,20 +51,21 @@
       </tbody>
     </table>
 
-    <div class="py-5">
+    <div
+    *ngIf="!stationsSearch || stationsSearch.length === 0" 
+    class="py-5">
       <button
         *ngIf="currentPage > 1"
         class="pr-10"
         (click)="loadPreviousStations()"
       >
-        Back
+        < Back
       </button>
 
       <button 
       (click)="loadNextStations()"
-      *ngIf="!stationsSearch || stationsSearch.length === 0"
       >
-      Next</button>
+      Next > </button>
     </div>
   </div>
 </div>
