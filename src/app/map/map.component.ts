@@ -38,7 +38,7 @@ export class MapComponent implements AfterViewInit {
         const icon = L.icon({
           iconUrl: `../../assets/img/bicycle.png`,
           iconSize: [20, 20],
-          iconAnchor: [15.5, 42],
+          iconAnchor: [11, 42],
           popupAnchor: [0, -40]
         });
   
@@ -47,9 +47,18 @@ export class MapComponent implements AfterViewInit {
           station.x
         ], { icon }).addTo(this.map);
 
+        const popupContent =
+        `
+          <div>
+            <span>
+              ${ station.nimi }, ${ station.kapasiteetti } bikes
+            </span>
+          </div>
+        `;
+
         const popup = L.popup({
           closeButton: true
-        }).setContent(station.nimi);
+        }).setContent(popupContent);
 
         marker.bindPopup(popup);
 
