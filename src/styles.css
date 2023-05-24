@@ -1,6 +1,8 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import '~leaflet/dist/leaflet.css';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 body {
     font-family: Raleway;

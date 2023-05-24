@@ -29,28 +29,35 @@ export class MapComponent implements AfterViewInit {
   }
 
   private initMap(): void {
-    this.map = L.map(this.mapContainer.nativeElement).setView([60.1699, 24.9384], 13);
+    this.map = L.map(this.mapContainer.nativeElement, {
+    });
   
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
       maxZoom: 18
     }).addTo(this.map);
+  
+    this.map.setView([60.1699, 24.9384], 13);
+
+    
   }
 
   private getAndDisplayStations(): void {
     this.stationsService.getStations('500', '0').subscribe((stations: Stations[]) => {
       stations.forEach((station: Stations) => {
         const icon = L.icon({
-          iconUrl: `../../assets/img/bicycle.png`,
+          iconUrl: `../../assets/img/bicycle2.png`,
           iconSize: [20, 20],
-          iconAnchor: [11, 42],
-          popupAnchor: [0, -40]
+          iconAnchor: [20, 20],
+          popupAnchor: [-10, -15]
         });
-  
-        const marker = L.marker([
-          station.y, 
-          station.x
-        ], { icon }).addTo(this.map);
+
+        const marker = L.marker(
+          [station.y, station.x],
+          { icon }
+        ).addTo(this.map);
+
+        this.markers.push(marker);
 
         const popupContent =
         `

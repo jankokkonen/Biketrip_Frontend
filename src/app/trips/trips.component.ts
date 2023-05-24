@@ -51,9 +51,9 @@ export class TripsComponent implements OnInit {
       
           const formattedDuration =
             `
-            ${Math.floor(trip.duration_sec / 60)} min 
-            ${trip.duration_sec % 60 < 10 ? '0' : ''}
-            ${trip.duration_sec % 60} s
+            ${Math.floor(trip.duration_sec / 60)}min 
+            ${trip.duration_sec % 60 < 10 ?'0':''}
+            ${trip.duration_sec % 60}s
             `;
       
           const formattedDistance = 

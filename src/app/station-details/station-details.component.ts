@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router'
+
 import { Stations } from 'src/shared/interfaces';
 import { TripsService } from 'src/services/trips.service';
 @Component({
@@ -14,7 +16,8 @@ export class StationDetailsComponent implements OnInit {
   returnCount = 0;
 
   constructor (
-    private tripsService: TripsService
+    private tripsService: TripsService,
+    private router: Router,
     ) {}
 
   ngOnInit(): void {
@@ -39,5 +42,9 @@ export class StationDetailsComponent implements OnInit {
           this.returnCount = count[0].count;
       })
     }
+  }
+
+  backToStations() {
+    this.router.navigate(['/']);
   }
 }
