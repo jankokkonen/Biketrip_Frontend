@@ -73,7 +73,15 @@ export class MapComponent implements AfterViewInit {
         });
   
         marker.on('mouseover', () => {
+          if (!this.selectedMarker || this.selectedMarker !== marker) {
             marker.openPopup();
+          }
+        });
+        
+        marker.on('mouseout', () => {
+          if (!this.selectedMarker || this.selectedMarker !== marker) {
+            marker.closePopup();
+          }
         });
       });
     });
@@ -84,7 +92,7 @@ export class MapComponent implements AfterViewInit {
       setTimeout(() => {
         this.selectedStation = station;
         this.router.navigate(['/station-details', station.station_id], { state: { station } });
-      }, 300);
+      }, .1);
   }
 
   private setSelectedMarker(marker: L.Marker): void {
