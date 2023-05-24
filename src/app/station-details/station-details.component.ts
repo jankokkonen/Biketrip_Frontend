@@ -30,7 +30,7 @@ export class StationDetailsComponent implements OnInit {
 
   getDepartureCount(): void {
     if (this.station) {
-      this.tripsService.getDepartureCount(this.station['name'])
+      this.tripsService.getDepartureCount(this.station['nimi'])
         .subscribe((count: any) => {
           this.departureCount = count[0].count;
       })
@@ -39,7 +39,7 @@ export class StationDetailsComponent implements OnInit {
 
   getReturnCount() {
     if (this.station) {
-      this.tripsService.getReturnCount(this.station['name'])
+      this.tripsService.getReturnCount(this.station['nimi'])
         .subscribe((count: any) => {
           this.returnCount = count[0].count;
       })
