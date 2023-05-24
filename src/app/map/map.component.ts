@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import * as L from 'leaflet';
+import { Router } from '@angular/router'
 
 import { StationsService } from 'src/services/stations.service';
 import { Stations } from 'src/shared/interfaces';
@@ -14,9 +15,13 @@ export class MapComponent implements AfterViewInit {
   mapContainer!: ElementRef;
   public map!: L.Map;
   markers:L.Marker[] = []
-  private selectedMarker!: L.Marker;
+  public selectedMarker?: L.Marker;
+  selectedStation?: Stations;
 
-  constructor(private stationsService: StationsService) {}
+  constructor(
+    private stationsService: StationsService,
+    private router: Router,
+    ){}
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -64,6 +69,7 @@ export class MapComponent implements AfterViewInit {
 
         marker.on('click', () => {
           this.setSelectedMarker(marker);
+          this.openStationDetails(station);
         });
   
         marker.on('mouseover', () => {
@@ -73,10 +79,18 @@ export class MapComponent implements AfterViewInit {
     });
   }
 
+  openStationDetails(station: Stations) {
+      this.router.navigate(['/']);
+      setTimeout(() => {
+        this.selectedStation = station;
+        this.router.navigate(['/station-details', station.station_id], { state: { station } });
+      }, 300);
+  }
+
   private setSelectedMarker(marker: L.Marker): void {
     if (this.selectedMarker === marker) {
-      this.selectedMarker;
       marker.closePopup();
+      this.selectedMarker = undefined;
     } else {
       if (this.selectedMarker) {
         this.selectedMarker.closePopup();

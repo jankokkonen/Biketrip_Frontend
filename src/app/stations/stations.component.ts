@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { catchError, throwError, Subject, of, fromEvent } from 'rxjs';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
@@ -88,7 +88,7 @@ export class StationsComponent implements OnInit {
         })
         this.totalStations = response.length;
       });
-  }
+  } 
 
   openStationDetails(station: Stations) {
       this.selectedStation = station;
