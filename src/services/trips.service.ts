@@ -7,7 +7,7 @@ import { Trips } from '../shared/interfaces';
   providedIn: 'root'
 })
 export class TripsService {
-  private url = 'http://localhost:3000/getTrips';
+  public url = 'http://localhost:3000/getTrips';
 
   constructor(private http: HttpClient) { }
 

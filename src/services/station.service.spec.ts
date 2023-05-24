@@ -26,9 +26,7 @@ describe('StationsService', () => {
   });
 
   it('should retrieve stations', () => {
-    const mockStations: Stations[] = [
-      
-    ];
+    const mockStations: Stations[] = [];
     const limit = '10';
     const offset = '0';
 

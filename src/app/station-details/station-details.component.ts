@@ -18,7 +18,9 @@ export class StationDetailsComponent implements OnInit {
   constructor (
     private tripsService: TripsService,
     private router: Router,
-    ) {}
+    ) {
+      this.station = history.state.station;
+    }
 
   ngOnInit(): void {
     this.station = history.state.station;
