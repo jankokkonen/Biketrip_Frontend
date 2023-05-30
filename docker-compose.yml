@@ -1,0 +1,65 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:alpine
+    restart: always
+    environment: 
+      - POSTGRES_USER=janne
+      - POSTGRES_PASSWORD=salasana
+      - POSTGRES_DB=biketrips
+    ports:
+      - 5432:5432
+    networks:
+      - shared-network
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - /Users/s2200697/Desktop/Solita/Biketrip_Backend/data/asemat_info.csv:/Biketrip_Backend/data/asemat_info.csv
+      - /Users/s2200697/Desktop/Solita/Biketrip_Backend/data/2021-05.csv:/Biketrip_Backend/data/2021-05.csv
+      - /Users/s2200697/Desktop/Solita/Biketrip_Backend/data/2021-06.csv:/Biketrip_Backend/data/2021-06.csv
+      - /Users/s2200697/Desktop/Solita/Biketrip_Backend/data/2021-07.csv:/Biketrip_Backend/data/2021-07.csv
+
+    
+  backend:
+      container_name: biketrip_backend
+      restart: unless-stopped
+      image: biketrip-backend-prod:1.0.0
+      build:
+        context: ../Biketrip_backend
+        target: production
+        dockerfile: Dockerfile
+
+      ports:
+        - 3000:3000
+      environment:
+        DB_HOST: postgres
+      networks:
+        - shared-network
+      depends_on:
+        - postgres
+      links:
+        - postgres
+
+  frontend:
+      container_name: biketrip_frontend
+      restart: unless-stopped
+      image: biketrip-frontend-prod:1.0.0
+      build:
+        context: .
+        target: production
+        dockerfile: Dockerfile
+
+      ports:
+        - 4200:4200
+      networks:
+        - shared-network
+      depends_on:
+        - backend
+
+networks:
+  shared-network:
+    name: biketrip_shared-network
+
+volumes:
+  postgres:
+    driver: local
