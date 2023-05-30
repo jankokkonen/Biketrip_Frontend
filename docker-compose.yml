@@ -14,7 +14,7 @@ services:
       - shared-network
     volumes:
       - postgres:/var/lib/postgresql/data
-      - /Users/s2200697/Desktop/Solita/Biketrip_Backend/data/asemat_info.csv:/Biketrip_Backend/data/asemat_info.csv
+      - /Users/s2200697/Desktop/Solita/Biketrip_Backend/data/Helsingin_ja_Espoon_kaupunkipy%C3%B6r%C3%A4asemat_avoin.csv:/Biketrip_Backend/data/Helsingin_ja_Espoon_kaupunkipy%C3%B6r%C3%A4asemat_avoin.csv
       - /Users/s2200697/Desktop/Solita/Biketrip_Backend/data/2021-05.csv:/Biketrip_Backend/data/2021-05.csv
       - /Users/s2200697/Desktop/Solita/Biketrip_Backend/data/2021-06.csv:/Biketrip_Backend/data/2021-06.csv
       - /Users/s2200697/Desktop/Solita/Biketrip_Backend/data/2021-07.csv:/Biketrip_Backend/data/2021-07.csv
