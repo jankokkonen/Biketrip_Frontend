@@ -1,29 +1,44 @@
-# BiketripFrontend
+# BikeTripFrontend - Dokumentaatio
+## Johdanto
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
+Tämä dokumentti antaa yleiskuvan Biketrip-sovellusprojektista, joka näyttää tietoja Helsingin pääkaupunkiseudulla tehdyistä kaupunkipyörämatkoista.
+Projektissa luodaan ja taustapalvelu, joka hakee ja esittää tiedot.
 
-## Development server
+## Teknologiat
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Projekti on toteutettu käyttäen seuraavia teknologioita:
 
-## Code scaffolding
+HTML
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Tailwind CSS: Valitsin Tailwindin, koska projektin kanssa tuli hieman kiire ja Tailwind 
+tarjoaa valmiita tyylimäärittelyjä ja komponentteja nopeaan ja joustavaan sivustojen kehitykseen.
 
-## Build
+Angular: Valitsin projektiin Angularin, koska se on ollut meillä koulussa keskeisin frontend-teknologia 
+ja mahdollistaa dynaamisten ja responsiivisten käyttöliittymien luomisen.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+TypeScript
 
-## Running unit tests
+RxJS: observaatiot ja operaattorit
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Leaflet: Valitsin Leaflet karttaohjelmiston, koska siitä on jo hieman kokemusta koulun projektin kautta
 
-## Running end-to-end tests
+git: versionhallinta
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+npm: paketinhallinta
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# Biketrip_Frontend
-# Biketrip_Frontend
+## Asennus
+
+## Käyttöohjeet
+
+## Rakenne ja komponentit
+
+## API-Dokumentaatio
+
+## Testausohjeet
+
+## Vianmääritys ja yleiset ongelmat
+
+## Lisenssi ja tekijänoikeudet
+
+## Muuta
