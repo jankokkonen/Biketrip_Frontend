@@ -1,54 +1,30 @@
-# BikeTripFrontend - Dokumentaatio
-## Johdanto
+# BikeTripFrontend
+## Based on an assignment by Solita Dev Academy: 
 
 https://github.com/solita/dev-academy-2023-exercise
 
-Tämä dokumentti antaa yleiskuvan Biketrip-sovellusprojektista, joka näyttää tietoja Helsingin pääkaupunkiseudulla tehdyistä kaupunkipyörämatkoista.
-Projektissa luodaan ja taustapalvelu, joka hakee ja esittää tiedot.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0
 
-## Teknologiat
+## Development server
 
-Projekti on toteutettu käyttäen seuraavia teknologioita:
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-HTML
+## Code scaffolding
 
-Tailwind CSS: Valitsin Tailwindin, koska Tailwind tarjoaa valmiita tyylimäärittelyjä ja 
-komponentteja nopeaan ja joustavaan sivustojen kehitykseen.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-Angular: Valitsin projektiin Angularin, koska se on laajalti 
-käytetty TypeScript-pohjainen JavaScript-kehys
+## Build
 
-TypeScript
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-RxJS: observaatiot ja operaattorit
+## Running unit tests
 
-Leaflet: Valitsin Leaflet karttaohjelmiston, koska siitä on jo hieman kokemusta koulun projektin kautta
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-git: versionhallinta
+## Running end-to-end tests
 
-npm: paketinhallinta
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-Docker: Valitsin Dockerin, koska se tarjoaa kätevän ja tehokkaan tavan paketoida sovelluksen ja 
-sen riippuvuudet yhtenäiseksi kontiksi. 
+## Further help
 
-## Asennus
-
-Käytin Dockeria projektin kääntämiseen ja luomiseen yhdeksi imageksi, 
-mikä helpottaa sovelluksen käyttöönottamista ja suorittamista eri ympäristöissä. 
-
-### Asennusohjeet
-
-Kloonaa GitHubista projektitiedostot paikallisesti koneellesi.
-
-Varmista, että sinulla on Docker asennettuna järjestelmääsi. Voit tarkistaa Dockerin asennuksen komennolla docker --version.
-
-Avaa komentokehote tai terminaali ja siirry Biketrip_Frontend projektikansion juureen.
-
-Varmista, että sinulla on lisätty Biketrip_Backend/data kansioon vaadittavat .csv tiedostot ja
-polku korjattu docker-compose.yml tiedostossa osoittamaan oikeaan tiedostoon mistä .csv tiedostot löytyvät.
-
-Käynnistä Docker-kontti käyttäen Docker Composea komennolla: docker-compose up --build 
-Tämä komento rakentaa uuden imagen projektista ja käynnistää Docker-kontin frontendin, backendin ja PostgreSQL-tietokannan kanssa.
-
-Kun Docker-kontti on käynnissä, voit avata selaimessa sovelluksen käyttämällä osoitetta http://localhost:4200.
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
