@@ -1,6 +1,6 @@
 # BikeTripFrontend
-## Based on an assignment by Solita Dev Academy: 
 
+Based on an assignment by Solita Dev Academy: 
 https://github.com/solita/dev-academy-2023-exercise
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0
